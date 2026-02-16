@@ -1,5 +1,8 @@
 ---
+export const prerender = false;
 
+import Dog from '../components/dog.astro';
+import Cat from '../components/cat.astro';
 ---
 
 <html lang="en">
@@ -12,6 +15,11 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<Dog/>
+		<Cat server:defer>
+			<div slot="fallback">
+				<span style="color: green; font-size: 2.5rem;">🐱 Loading cat fact...</span>
+			</div>
+		</Cat>
 	</body>
 </html>
